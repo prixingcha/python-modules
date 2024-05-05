@@ -111,7 +111,7 @@
         "kind": 5,
         "importPath": "common_module.all_in_one_module",
         "description": "common_module.all_in_one_module",
-        "peekOfCode": "selector = LLMSelector(model_choices)\nreturn_val = selector.run()\nprint(return_val)\nconfigurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint('this is just for test')\nprint(\"all_in_one_module.py\")",
+        "peekOfCode": "selector = LLMSelector(model_choices)\nreturn_val = selector.run()\nprint(return_val)\nprint(\"before\")\nx = os.environ.get(\"GROQ_API_KEY\")\nprint(os.environ.get(\"OPENAI_API_KEY\"))\nconfigurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint(\"afteR\")\nx = os.environ.get(\"GROQ_API_KEY\")",
         "detail": "common_module.all_in_one_module",
         "documentation": {}
     },
@@ -120,7 +120,16 @@
         "kind": 5,
         "importPath": "common_module.all_in_one_module",
         "description": "common_module.all_in_one_module",
-        "peekOfCode": "return_val = selector.run()\nprint(return_val)\nconfigurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint('this is just for test')\nprint(\"all_in_one_module.py\")",
+        "peekOfCode": "return_val = selector.run()\nprint(return_val)\nprint(\"before\")\nx = os.environ.get(\"GROQ_API_KEY\")\nprint(os.environ.get(\"OPENAI_API_KEY\"))\nconfigurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint(\"afteR\")\nx = os.environ.get(\"GROQ_API_KEY\")",
+        "detail": "common_module.all_in_one_module",
+        "documentation": {}
+    },
+    {
+        "label": "x",
+        "kind": 5,
+        "importPath": "common_module.all_in_one_module",
+        "description": "common_module.all_in_one_module",
+        "peekOfCode": "x = os.environ.get(\"GROQ_API_KEY\")\nprint(os.environ.get(\"OPENAI_API_KEY\"))\nconfigurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint(\"afteR\")\nx = os.environ.get(\"GROQ_API_KEY\")",
         "detail": "common_module.all_in_one_module",
         "documentation": {}
     },
@@ -129,8 +138,44 @@
         "kind": 5,
         "importPath": "common_module.all_in_one_module",
         "description": "common_module.all_in_one_module",
-        "peekOfCode": "configurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint('this is just for test')\nprint(\"all_in_one_module.py\")",
+        "peekOfCode": "configurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint(\"afteR\")\nx = os.environ.get(\"GROQ_API_KEY\")",
         "detail": "common_module.all_in_one_module",
+        "documentation": {}
+    },
+    {
+        "label": "x",
+        "kind": 5,
+        "importPath": "common_module.all_in_one_module",
+        "description": "common_module.all_in_one_module",
+        "peekOfCode": "x = os.environ.get(\"GROQ_API_KEY\")",
+        "detail": "common_module.all_in_one_module",
+        "documentation": {}
+    },
+    {
+        "label": "clear_screen",
+        "kind": 2,
+        "importPath": "common_module.dummy",
+        "description": "common_module.dummy",
+        "peekOfCode": "def clear_screen():\n    os.system('clear')\nclear_screen()\n# Get all environment variables as a dictionary\nenv_vars = os.environ\n# Convert dictionary to a list of tuples (key, value)\nenv_vars_list = list(env_vars.items())\nprint(env_vars_list[0])",
+        "detail": "common_module.dummy",
+        "documentation": {}
+    },
+    {
+        "label": "env_vars",
+        "kind": 5,
+        "importPath": "common_module.dummy",
+        "description": "common_module.dummy",
+        "peekOfCode": "env_vars = os.environ\n# Convert dictionary to a list of tuples (key, value)\nenv_vars_list = list(env_vars.items())\nprint(env_vars_list[0])",
+        "detail": "common_module.dummy",
+        "documentation": {}
+    },
+    {
+        "label": "env_vars_list",
+        "kind": 5,
+        "importPath": "common_module.dummy",
+        "description": "common_module.dummy",
+        "peekOfCode": "env_vars_list = list(env_vars.items())\nprint(env_vars_list[0])",
+        "detail": "common_module.dummy",
         "documentation": {}
     },
     {
@@ -138,7 +183,7 @@
         "kind": 6,
         "importPath": "llm_selector_package.llm_selector",
         "description": "llm_selector_package.llm_selector",
-        "peekOfCode": "class LLMSelector:\n    def __init__(self, models):\n        self.models = models\n        self.console = Console()\n    def display_models(self):\n        self.console.print(\"Select an LLM model by entering its corresponding number:\", style=\"bold underline\")\n        for key, value in self.models.items():\n            self.console.print(f\"[red]{key}[/red]: [green]{value}[/green]\")\n    def select_model(self):\n        selected_key = None",
+        "peekOfCode": "class LLMSelector:\n    def __init__(self, models):\n        self.models = models\n        self.console = Console()\n    def display_models(self):\n        os.system('clr')\n        self.console.print(\"Select an LLM model by entering its corresponding number:\", style=\"bold underline\")\n        for key, value in self.models.items():\n            self.console.print(f\"[red]{key}[/red]: [green]{value}[/green]\")\n    def select_model(self):",
         "detail": "llm_selector_package.llm_selector",
         "documentation": {}
     },
@@ -156,7 +201,7 @@
         "kind": 5,
         "importPath": "llm_selector_package.llm_selector",
         "description": "llm_selector_package.llm_selector",
-        "peekOfCode": "model_choices = {\n    \"1\": \"GROQ\",\n    \"2\": \"gpt-3.5-turbo-1106\",\n    \"3\": \"gpt-4.0\",\n    \"4\": \"mistral\",\n    \"5\": \"Other\"\n}\nclass LLMSelector:\n    def __init__(self, models):\n        self.models = models",
+        "peekOfCode": "model_choices = {\n    \"0\": \"Clear all Environment\",\n    \"1\": \"GROQ\",\n    \"2\": \"gpt-3.5-turbo-1106\",\n    \"3\": \"gpt-4.0\",\n    \"4\": \"mistral\",\n    \"5\": \"Other\",\n    \"Q\": \"QUIT\"\n}\nclass LLMSelector:",
         "detail": "llm_selector_package.llm_selector",
         "documentation": {}
     },
@@ -165,7 +210,7 @@
         "kind": 6,
         "importPath": "llm_selector_package.model_setup",
         "description": "llm_selector_package.model_setup",
-        "peekOfCode": "class ModelConfigurator:\n    _instance = None\n    def __new__(cls, model_choice):\n        if cls._instance is None:\n            cls._instance = super().__new__(cls)\n        return cls._instance\n    def __init__(self, model_choice):\n        if not hasattr(self, 'model_choice'):\n            self.model_choice = model_choice\n    def configure(self):",
+        "peekOfCode": "class ModelConfigurator:\n    _instance = None\n    def __new__(cls, model_choice):\n        if cls._instance is None:\n            cls._instance = super().__new__(cls)\n        return cls._instance\n    def __init__(self, model_choice):\n        if not hasattr(self, \"model_choice\"):\n            self.model_choice = model_choice\n    def configure(self):",
         "detail": "llm_selector_package.model_setup",
         "documentation": {}
     },

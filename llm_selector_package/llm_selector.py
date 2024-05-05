@@ -1,15 +1,17 @@
 import sys
 from rich.console import Console
 from  rich import print
+import os
 
 model_choices = {
+    "0": "Clear all Environment",
     "1": "GROQ",
     "2": "gpt-3.5-turbo-1106",
     "3": "gpt-4.0",
     "4": "mistral",
-    "5": "Other"
+    "5": "Other",
+    "Q": "QUIT"
 }
-
 
 class LLMSelector:
     def __init__(self, models):
@@ -17,6 +19,7 @@ class LLMSelector:
         self.console = Console()
 
     def display_models(self):
+        os.system('clr')
         self.console.print("Select an LLM model by entering its corresponding number:", style="bold underline")
         for key, value in self.models.items():
             self.console.print(f"[red]{key}[/red]: [green]{value}[/green]")
@@ -39,7 +42,11 @@ class LLMSelector:
     def run(self):
         self.display_models()
         selected_key = self.select_model()
-        if selected_key != 'q':
+        if selected_key == '0':
+            os.environ.clear()
+            os.system('clear')
+            self.display_models()
+        elif selected_key != 'q':
             selected_model = self.models[selected_key]  # Retrieve the model name using the selected key
             return selected_model  # Return the selected model name
         return None  # Return None if 'q' is pressed without selecting a model
