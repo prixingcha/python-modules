@@ -1,0 +1,168 @@
+[
+    {
+        "label": "sys",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
+        "documentation": {}
+    },
+    {
+        "label": "Console",
+        "importPath": "rich.console",
+        "description": "rich.console",
+        "isExtraImport": true,
+        "detail": "rich.console",
+        "documentation": {}
+    },
+    {
+        "label": "print",
+        "importPath": "rich",
+        "description": "rich",
+        "isExtraImport": true,
+        "detail": "rich",
+        "documentation": {}
+    },
+    {
+        "label": "os",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os",
+        "description": "os",
+        "detail": "os",
+        "documentation": {}
+    },
+    {
+        "label": "temp",
+        "importPath": "new_model_123.variables",
+        "description": "new_model_123.variables",
+        "isExtraImport": true,
+        "detail": "new_model_123.variables",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "llm_selector_package.llm_selector",
+        "description": "llm_selector_package.llm_selector",
+        "isExtraImport": true,
+        "detail": "llm_selector_package.llm_selector",
+        "documentation": {}
+    },
+    {
+        "label": "ModelConfigurator",
+        "importPath": "llm_selector_package.model_setup",
+        "description": "llm_selector_package.model_setup",
+        "isExtraImport": true,
+        "detail": "llm_selector_package.model_setup",
+        "documentation": {}
+    },
+    {
+        "label": "json",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "json",
+        "description": "json",
+        "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "LLMSelector",
+        "kind": 6,
+        "importPath": "llm_selector_package.llm_selector",
+        "description": "llm_selector_package.llm_selector",
+        "peekOfCode": "class LLMSelector:\n    def __init__(self, models):\n        self.models = models\n        self.console = Console()\n    def display_models(self):\n        self.console.print(\"Select an LLM model by entering its corresponding number:\", style=\"bold underline\")\n        for key, value in self.models.items():\n            self.console.print(f\"[red]{key}[/red]: [green]{value}[/green]\")\n    def select_model(self):\n        selected_key = None",
+        "detail": "llm_selector_package.llm_selector",
+        "documentation": {}
+    },
+    {
+        "label": "getch",
+        "kind": 2,
+        "importPath": "llm_selector_package.llm_selector",
+        "description": "llm_selector_package.llm_selector",
+        "peekOfCode": "def getch():\n    if sys.platform.startswith('win'):\n        import msvcrt\n        return msvcrt.getch().decode('utf-8')\n    else:\n        import tty, termios\n        fd = sys.stdin.fileno()\n        old_settings = termios.tcgetattr(fd)\n        try:\n            tty.setraw(fd)",
+        "detail": "llm_selector_package.llm_selector",
+        "documentation": {}
+    },
+    {
+        "label": "model_choices",
+        "kind": 5,
+        "importPath": "llm_selector_package.llm_selector",
+        "description": "llm_selector_package.llm_selector",
+        "peekOfCode": "model_choices = {\n    \"1\": \"GROQ\",\n    \"2\": \"gpt-3.5-turbo-1106\",\n    \"3\": \"gpt-4.0\",\n    \"4\": \"mistral\",\n    \"5\": \"Other\"\n}\nclass LLMSelector:\n    def __init__(self, models):\n        self.models = models",
+        "detail": "llm_selector_package.llm_selector",
+        "documentation": {}
+    },
+    {
+        "label": "ModelConfigurator",
+        "kind": 6,
+        "importPath": "llm_selector_package.model_setup",
+        "description": "llm_selector_package.model_setup",
+        "peekOfCode": "class ModelConfigurator:\n    _instance = None\n    def __new__(cls, model_choice):\n        if cls._instance is None:\n            cls._instance = super().__new__(cls)\n        return cls._instance\n    def __init__(self, model_choice):\n        if not hasattr(self, 'model_choice'):\n            self.model_choice = model_choice\n    def configure(self):",
+        "detail": "llm_selector_package.model_setup",
+        "documentation": {}
+    },
+    {
+        "label": "dummy_value",
+        "kind": 5,
+        "importPath": "llm_selector_package.testing_python",
+        "description": "llm_selector_package.testing_python",
+        "peekOfCode": "dummy_value = \"yahoooooo\"",
+        "detail": "llm_selector_package.testing_python",
+        "documentation": {}
+    },
+    {
+        "label": "temp",
+        "kind": 5,
+        "importPath": "new_model_123.variables",
+        "description": "new_model_123.variables",
+        "peekOfCode": "temp = \"this is temp variable\"",
+        "detail": "new_model_123.variables",
+        "documentation": {}
+    },
+    {
+        "label": "selector",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "selector = LLMSelector(model_choices)\nreturn_val = selector.run()\nprint(return_val)\nconfigurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint('this is just for test')\nimport json\n# Sample data\nsample_data = {\n    \"name\": \"John Doe\",",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "return_val",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "return_val = selector.run()\nprint(return_val)\nconfigurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint('this is just for test')\nimport json\n# Sample data\nsample_data = {\n    \"name\": \"John Doe\",\n    \"age\": 30,",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "configurator",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "configurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint('this is just for test')\nimport json\n# Sample data\nsample_data = {\n    \"name\": \"John Doe\",\n    \"age\": 30,\n    \"city\": \"New York\",\n    \"email\": \"john@example.com\",",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "sample_data",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "sample_data = {\n    \"name\": \"John Doe\",\n    \"age\": 30,\n    \"city\": \"New York\",\n    \"email\": \"john@example.com\",\n    \"is_active\": True\n}\n# Convert data to JSON format\njson_data = json.dumps(sample_data, indent=4)\n# Print the JSON data",
+        "detail": "app",
+        "documentation": {}
+    },
+    {
+        "label": "json_data",
+        "kind": 5,
+        "importPath": "app",
+        "description": "app",
+        "peekOfCode": "json_data = json.dumps(sample_data, indent=4)\n# Print the JSON data\nprint(json_data)",
+        "detail": "app",
+        "documentation": {}
+    }
+]
