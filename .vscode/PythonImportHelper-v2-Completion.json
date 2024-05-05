@@ -17,6 +17,22 @@
         "documentation": {}
     },
     {
+        "label": "Console",
+        "importPath": "rich.console",
+        "description": "rich.console",
+        "isExtraImport": true,
+        "detail": "rich.console",
+        "documentation": {}
+    },
+    {
+        "label": "print",
+        "importPath": "rich",
+        "description": "rich",
+        "isExtraImport": true,
+        "detail": "rich",
+        "documentation": {}
+    },
+    {
         "label": "print",
         "importPath": "rich",
         "description": "rich",
@@ -42,11 +58,35 @@
         "documentation": {}
     },
     {
+        "label": "temp",
+        "importPath": "new_model_123.variables",
+        "description": "new_model_123.variables",
+        "isExtraImport": true,
+        "detail": "new_model_123.variables",
+        "documentation": {}
+    },
+    {
         "label": "*",
         "importPath": "llm_selector_package.llm_selector",
         "description": "llm_selector_package.llm_selector",
         "isExtraImport": true,
         "detail": "llm_selector_package.llm_selector",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "llm_selector_package.llm_selector",
+        "description": "llm_selector_package.llm_selector",
+        "isExtraImport": true,
+        "detail": "llm_selector_package.llm_selector",
+        "documentation": {}
+    },
+    {
+        "label": "ModelConfigurator",
+        "importPath": "llm_selector_package.model_setup",
+        "description": "llm_selector_package.model_setup",
+        "isExtraImport": true,
+        "detail": "llm_selector_package.model_setup",
         "documentation": {}
     },
     {
@@ -64,6 +104,33 @@
         "importPath": "json",
         "description": "json",
         "detail": "json",
+        "documentation": {}
+    },
+    {
+        "label": "selector",
+        "kind": 5,
+        "importPath": "common_module.all_in_one_module",
+        "description": "common_module.all_in_one_module",
+        "peekOfCode": "selector = LLMSelector(model_choices)\nreturn_val = selector.run()\nprint(return_val)\nconfigurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint('this is just for test')\nprint(\"all_in_one_module.py\")",
+        "detail": "common_module.all_in_one_module",
+        "documentation": {}
+    },
+    {
+        "label": "return_val",
+        "kind": 5,
+        "importPath": "common_module.all_in_one_module",
+        "description": "common_module.all_in_one_module",
+        "peekOfCode": "return_val = selector.run()\nprint(return_val)\nconfigurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint('this is just for test')\nprint(\"all_in_one_module.py\")",
+        "detail": "common_module.all_in_one_module",
+        "documentation": {}
+    },
+    {
+        "label": "configurator",
+        "kind": 5,
+        "importPath": "common_module.all_in_one_module",
+        "description": "common_module.all_in_one_module",
+        "peekOfCode": "configurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint('this is just for test')\nprint(\"all_in_one_module.py\")",
+        "detail": "common_module.all_in_one_module",
         "documentation": {}
     },
     {
