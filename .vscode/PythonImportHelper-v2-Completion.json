@@ -83,11 +83,47 @@
         "documentation": {}
     },
     {
+        "label": "sample_to_use_menu_and_model_activation",
+        "kind": 5,
+        "importPath": "common_modules.all_in_one_module",
+        "description": "common_modules.all_in_one_module",
+        "peekOfCode": "sample_to_use_menu_and_model_activation = \"\"\"\nselector = LLMSelector(model_choices)\nreturn_val = selector.run()\nconfigurator = ModelConfigurator(return_val)\nconfigurator.configure()\n\"\"\"",
+        "detail": "common_modules.all_in_one_module",
+        "documentation": {}
+    },
+    {
+        "label": "selector",
+        "kind": 5,
+        "importPath": "common_modules.all_in_one_module",
+        "description": "common_modules.all_in_one_module",
+        "peekOfCode": "selector = LLMSelector(model_choices)\nreturn_val = selector.run()\nconfigurator = ModelConfigurator(return_val)\nconfigurator.configure()\n\"\"\"",
+        "detail": "common_modules.all_in_one_module",
+        "documentation": {}
+    },
+    {
+        "label": "return_val",
+        "kind": 5,
+        "importPath": "common_modules.all_in_one_module",
+        "description": "common_modules.all_in_one_module",
+        "peekOfCode": "return_val = selector.run()\nconfigurator = ModelConfigurator(return_val)\nconfigurator.configure()\n\"\"\"",
+        "detail": "common_modules.all_in_one_module",
+        "documentation": {}
+    },
+    {
+        "label": "configurator",
+        "kind": 5,
+        "importPath": "common_modules.all_in_one_module",
+        "description": "common_modules.all_in_one_module",
+        "peekOfCode": "configurator = ModelConfigurator(return_val)\nconfigurator.configure()\n\"\"\"",
+        "detail": "common_modules.all_in_one_module",
+        "documentation": {}
+    },
+    {
         "label": "LLMSelector",
         "kind": 6,
         "importPath": "llm_selector_package.llm_selector",
         "description": "llm_selector_package.llm_selector",
-        "peekOfCode": "class LLMSelector:\n    def __init__(self, models):\n        self.models = models\n        self.console = Console()\n    def display_models(self):\n        self.console.print(\"Select an LLM model by entering its corresponding number:\", style=\"bold underline\")\n        for key, value in self.models.items():\n            self.console.print(f\"[red]{key}[/red]: [green]{value}[/green]\")\n    def select_model(self):\n        selected_key = None",
+        "peekOfCode": "class LLMSelector:\n    def __init__(self, models):\n        self.models = models\n        self.console = Console()\n    def display_models(self):\n        self.console.print(\"Select an LLM model by entering its corresponding number:\", style=\"bold underline\")\n        for key, value in self.models.items():\n            self.console.print(f\"[red]{key}[/red]: [green]{value}[/green]\")\n    def select_model(self):\n        while True:",
         "detail": "llm_selector_package.llm_selector",
         "documentation": {}
     },

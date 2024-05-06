@@ -6,7 +6,10 @@ import sys
 import json
 from rich import print
 
-# selector = LLMSelector(model_choices)
-# return_val = selector.run()
-# configurator = ModelConfigurator(return_val)
-# configurator.configure()
+
+sample_to_use_menu_and_model_activation = """
+selector = LLMSelector(model_choices)
+return_val = selector.run()
+configurator = ModelConfigurator(return_val)
+configurator.configure()
+"""
