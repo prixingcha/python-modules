@@ -1,8 +1,9 @@
 import sys
 from rich.console import Console
-from  rich import print
 import os
 
+
+#next put these into as a json data into json or CSV file 
 model_choices = {
     "0": "Clear all Environment",
     "1": "GROQ",
@@ -19,7 +20,6 @@ class LLMSelector:
         self.console = Console()
 
     def display_models(self):
-        os.system('clr')
         self.console.print("Select an LLM model by entering its corresponding number:", style="bold underline")
         for key, value in self.models.items():
             self.console.print(f"[red]{key}[/red]: [green]{value}[/green]")
@@ -29,6 +29,8 @@ class LLMSelector:
         while selected_key not in self.models and selected_key != 'q':
             self.console.print("Enter the number of the LLM model you want to select (press 'q' to quit): ", end='', style="bold")
             selected_key = getch()
+            if selected_key.lower().startswith('c'):
+                selected_key = selected_key[1:]  # Remove the 'c' flag character
             if selected_key in self.models:
                 self.console.print(selected_key)
                 return selected_key  # Return the selected key
@@ -38,6 +40,24 @@ class LLMSelector:
             else:
                 self.console.print("\nInvalid input. Please enter a valid number corresponding to an LLM model or press 'q' to quit.", style="bold red")
         return None  # Return None if 'q' is pressed without selecting a model
+
+
+
+
+    # def select_model(self):
+    #     selected_key = None
+    #     while selected_key not in self.models and selected_key != 'q':
+    #         self.console.print("Enter the number of the LLM model you want to select (press 'q' to quit): ", end='', style="bold")
+    #         selected_key = getch()
+    #         if selected_key in self.models:
+    #             self.console.print(selected_key)
+    #             return selected_key  # Return the selected key
+    #         elif selected_key == 'q':
+    #             self.console.print(selected_key)
+    #             sys.exit("Exiting the program.")
+    #         else:
+    #             self.console.print("\nInvalid input. Please enter a valid number corresponding to an LLM model or press 'q' to quit.", style="bold red")
+    #     return None  # Return None if 'q' is pressed without selecting a model
 
     def run(self):
         self.display_models()

@@ -1,6 +1,4 @@
-from new_model_123.variables import temp
 from llm_selector_package.llm_selector import *
-#LLMSelector, model_choices #, print # type: ignore
 from llm_selector_package.model_setup import ModelConfigurator # type: ignore
 
 print(model_choices)

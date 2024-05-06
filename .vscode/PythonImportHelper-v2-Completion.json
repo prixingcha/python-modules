@@ -1,11 +1,34 @@
 [
     {
-        "label": "sys",
-        "kind": 6,
+        "label": "*",
+        "importPath": "llm_selector_package.llm_selector",
+        "description": "llm_selector_package.llm_selector",
         "isExtraImport": true,
-        "importPath": "sys",
-        "description": "sys",
-        "detail": "sys",
+        "detail": "llm_selector_package.llm_selector",
+        "documentation": {}
+    },
+    {
+        "label": "*",
+        "importPath": "llm_selector_package.llm_selector",
+        "description": "llm_selector_package.llm_selector",
+        "isExtraImport": true,
+        "detail": "llm_selector_package.llm_selector",
+        "documentation": {}
+    },
+    {
+        "label": "ModelConfigurator",
+        "importPath": "llm_selector_package.model_setup",
+        "description": "llm_selector_package.model_setup",
+        "isExtraImport": true,
+        "detail": "llm_selector_package.model_setup",
+        "documentation": {}
+    },
+    {
+        "label": "ModelConfigurator",
+        "importPath": "llm_selector_package.model_setup",
+        "description": "llm_selector_package.model_setup",
+        "isExtraImport": true,
+        "detail": "llm_selector_package.model_setup",
         "documentation": {}
     },
     {
@@ -22,22 +45,6 @@
         "description": "rich.console",
         "isExtraImport": true,
         "detail": "rich.console",
-        "documentation": {}
-    },
-    {
-        "label": "print",
-        "importPath": "rich",
-        "description": "rich",
-        "isExtraImport": true,
-        "detail": "rich",
-        "documentation": {}
-    },
-    {
-        "label": "print",
-        "importPath": "rich",
-        "description": "rich",
-        "isExtraImport": true,
-        "detail": "rich",
         "documentation": {}
     },
     {
@@ -50,51 +57,12 @@
         "documentation": {}
     },
     {
-        "label": "temp",
-        "importPath": "new_model_123.variables",
-        "description": "new_model_123.variables",
+        "label": "sys",
+        "kind": 6,
         "isExtraImport": true,
-        "detail": "new_model_123.variables",
-        "documentation": {}
-    },
-    {
-        "label": "temp",
-        "importPath": "new_model_123.variables",
-        "description": "new_model_123.variables",
-        "isExtraImport": true,
-        "detail": "new_model_123.variables",
-        "documentation": {}
-    },
-    {
-        "label": "*",
-        "importPath": "llm_selector_package.llm_selector",
-        "description": "llm_selector_package.llm_selector",
-        "isExtraImport": true,
-        "detail": "llm_selector_package.llm_selector",
-        "documentation": {}
-    },
-    {
-        "label": "*",
-        "importPath": "llm_selector_package.llm_selector",
-        "description": "llm_selector_package.llm_selector",
-        "isExtraImport": true,
-        "detail": "llm_selector_package.llm_selector",
-        "documentation": {}
-    },
-    {
-        "label": "ModelConfigurator",
-        "importPath": "llm_selector_package.model_setup",
-        "description": "llm_selector_package.model_setup",
-        "isExtraImport": true,
-        "detail": "llm_selector_package.model_setup",
-        "documentation": {}
-    },
-    {
-        "label": "ModelConfigurator",
-        "importPath": "llm_selector_package.model_setup",
-        "description": "llm_selector_package.model_setup",
-        "isExtraImport": true,
-        "detail": "llm_selector_package.model_setup",
+        "importPath": "sys",
+        "description": "sys",
+        "detail": "sys",
         "documentation": {}
     },
     {
@@ -107,75 +75,11 @@
         "documentation": {}
     },
     {
-        "label": "selector",
-        "kind": 5,
-        "importPath": "common_module.all_in_one_module",
-        "description": "common_module.all_in_one_module",
-        "peekOfCode": "selector = LLMSelector(model_choices)\nreturn_val = selector.run()\nprint(return_val)\nprint(\"before\")\nx = os.environ.get(\"GROQ_API_KEY\")\nprint(os.environ.get(\"OPENAI_API_KEY\"))\nconfigurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint(\"afteR\")\nx = os.environ.get(\"GROQ_API_KEY\")",
-        "detail": "common_module.all_in_one_module",
-        "documentation": {}
-    },
-    {
-        "label": "return_val",
-        "kind": 5,
-        "importPath": "common_module.all_in_one_module",
-        "description": "common_module.all_in_one_module",
-        "peekOfCode": "return_val = selector.run()\nprint(return_val)\nprint(\"before\")\nx = os.environ.get(\"GROQ_API_KEY\")\nprint(os.environ.get(\"OPENAI_API_KEY\"))\nconfigurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint(\"afteR\")\nx = os.environ.get(\"GROQ_API_KEY\")",
-        "detail": "common_module.all_in_one_module",
-        "documentation": {}
-    },
-    {
-        "label": "x",
-        "kind": 5,
-        "importPath": "common_module.all_in_one_module",
-        "description": "common_module.all_in_one_module",
-        "peekOfCode": "x = os.environ.get(\"GROQ_API_KEY\")\nprint(os.environ.get(\"OPENAI_API_KEY\"))\nconfigurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint(\"afteR\")\nx = os.environ.get(\"GROQ_API_KEY\")",
-        "detail": "common_module.all_in_one_module",
-        "documentation": {}
-    },
-    {
-        "label": "configurator",
-        "kind": 5,
-        "importPath": "common_module.all_in_one_module",
-        "description": "common_module.all_in_one_module",
-        "peekOfCode": "configurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint(\"afteR\")\nx = os.environ.get(\"GROQ_API_KEY\")",
-        "detail": "common_module.all_in_one_module",
-        "documentation": {}
-    },
-    {
-        "label": "x",
-        "kind": 5,
-        "importPath": "common_module.all_in_one_module",
-        "description": "common_module.all_in_one_module",
-        "peekOfCode": "x = os.environ.get(\"GROQ_API_KEY\")",
-        "detail": "common_module.all_in_one_module",
-        "documentation": {}
-    },
-    {
-        "label": "clear_screen",
-        "kind": 2,
-        "importPath": "common_module.dummy",
-        "description": "common_module.dummy",
-        "peekOfCode": "def clear_screen():\n    os.system('clear')\nclear_screen()\n# Get all environment variables as a dictionary\nenv_vars = os.environ\n# Convert dictionary to a list of tuples (key, value)\nenv_vars_list = list(env_vars.items())\nprint(env_vars_list[0])",
-        "detail": "common_module.dummy",
-        "documentation": {}
-    },
-    {
-        "label": "env_vars",
-        "kind": 5,
-        "importPath": "common_module.dummy",
-        "description": "common_module.dummy",
-        "peekOfCode": "env_vars = os.environ\n# Convert dictionary to a list of tuples (key, value)\nenv_vars_list = list(env_vars.items())\nprint(env_vars_list[0])",
-        "detail": "common_module.dummy",
-        "documentation": {}
-    },
-    {
-        "label": "env_vars_list",
-        "kind": 5,
-        "importPath": "common_module.dummy",
-        "description": "common_module.dummy",
-        "peekOfCode": "env_vars_list = list(env_vars.items())\nprint(env_vars_list[0])",
-        "detail": "common_module.dummy",
+        "label": "print",
+        "importPath": "rich",
+        "description": "rich",
+        "isExtraImport": true,
+        "detail": "rich",
         "documentation": {}
     },
     {
@@ -183,7 +87,7 @@
         "kind": 6,
         "importPath": "llm_selector_package.llm_selector",
         "description": "llm_selector_package.llm_selector",
-        "peekOfCode": "class LLMSelector:\n    def __init__(self, models):\n        self.models = models\n        self.console = Console()\n    def display_models(self):\n        os.system('clr')\n        self.console.print(\"Select an LLM model by entering its corresponding number:\", style=\"bold underline\")\n        for key, value in self.models.items():\n            self.console.print(f\"[red]{key}[/red]: [green]{value}[/green]\")\n    def select_model(self):",
+        "peekOfCode": "class LLMSelector:\n    def __init__(self, models):\n        self.models = models\n        self.console = Console()\n    def display_models(self):\n        self.console.print(\"Select an LLM model by entering its corresponding number:\", style=\"bold underline\")\n        for key, value in self.models.items():\n            self.console.print(f\"[red]{key}[/red]: [green]{value}[/green]\")\n    def select_model(self):\n        selected_key = None",
         "detail": "llm_selector_package.llm_selector",
         "documentation": {}
     },

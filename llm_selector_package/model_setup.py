@@ -1,6 +1,5 @@
 import os
 
-
 class ModelConfigurator:
     _instance = None
 
@@ -46,6 +45,7 @@ class ModelConfigurator:
             print(f"=========================================")
 
             os.system("clear")
+            print("yahoooo")
 
             print(
                 f"""
