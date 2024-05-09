@@ -5,6 +5,7 @@ import os
 import sys
 import json
 from rich import print
+import pdb
 
 
 sample_to_use_menu_and_model_activation = """

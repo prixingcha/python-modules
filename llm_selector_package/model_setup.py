@@ -1,7 +1,9 @@
 import os
+from openai import OpenAI
 
 class ModelConfigurator:
     _instance = None
+    all_env = {}  # new public variable
 
     def __new__(cls, model_choice):
         if cls._instance is None:
@@ -38,10 +40,12 @@ class ModelConfigurator:
                 os.environ["OPENAI_MODEL_NAME"] = env_vars_dict.get("OLLAMA_LLAMA_MODEL_NAME")
                 os.environ["OPENAI_API_KEY"] = env_vars_dict.get("OLLAMA_API_KEY")
 
+            # populate all_env variable
+            self.all_env = dict(os.environ)
+
             print(f"=========================================")
 
             os.system("clear" if os.name == "posix" else "cls")
-            print("yahoooo")
 
             print(
                 f"""
@@ -53,3 +57,23 @@ class ModelConfigurator:
             print(f"=========================================")
         except Exception as ex:
             print(f" error occurred here: {ex}")
+
+    def checkModelConnection(self):
+        client = OpenAI(base_url="http://localhost:11434/v1", api_key="ollama")
+
+        try:
+            response = client.chat.completions.create(
+            model="mistral",
+            messages=[
+                # {"role": "system", "content": "Always answer in rhymes"},
+                {"role": "user", "content": "add 1 and 2!!"},
+            ],
+            temperature=0.7,
+            stream=True
+            )
+            print("CONNECTED")
+            # for chunk in response:
+            #     if chunk.choices[0].delta.content is not None:
+            #         print(chunk.choices[0].delta.content, end="")
+        except Exception as ex:
+            print(f"NO CONNECTED {ex} !!") 
