@@ -9,7 +9,8 @@ model_choices = {
     "2": "gpt-3.5-turbo-1106",
     "3": "gpt-4.0",
     "4": "mistral",
-    "5": "Other",
+    "5": "LM Studio",
+    "6": "Other",
     "Q": "QUIT"
 }
 
