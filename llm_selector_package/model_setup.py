@@ -57,7 +57,7 @@ class ModelConfigurator:
             self.all_env = dict(os.environ)
 
             print(f"=========================================")
-            os.system("clear" if os.name == "posix" else "cls")
+            # os.system("clear" if os.name == "posix" else "cls")
 
             print(
                 f"""
@@ -71,6 +71,11 @@ class ModelConfigurator:
         except Exception as ex:
             print(f" error occurred here: {ex}")
 
+
+    def clear_screen(self):
+        os.system("clear" if os.name == "posix" else "cls")
+        
+        
     def check_model_connection(self):
         print("check_model_connection")
         print(
