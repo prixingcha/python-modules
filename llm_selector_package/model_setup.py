@@ -55,19 +55,16 @@ class ModelConfigurator:
                 os.environ["OPENAI_API_KEY"] = env_vars_dict.get("OLLAMA_API_KEY")
 
             self.all_env = dict(os.environ)
-
-            print(f"=========================================")
             # os.system("clear" if os.name == "posix" else "cls")
 
-            print(
-                f"""
-                this is at the END of config method:
-                model chose : {self.model_choice}
-                OPENAI_MODEL_NAME: {os.environ.get("OPENAI_MODEL_NAME")},
-                OPENAI_API_BASE : {os.environ.get("OPENAI_API_BASE")},
-                OPENAI_API_KEY : {os.environ.get("OPENAI_API_KEY")}"""
-            )
-            print(f"=========================================")
+            # print(
+            #     f"""
+            #     this is at the END of config method:
+            #     model chose : {self.model_choice}
+            #     OPENAI_MODEL_NAME: {os.environ.get("OPENAI_MODEL_NAME")},
+            #     OPENAI_API_BASE : {os.environ.get("OPENAI_API_BASE")},
+            #     OPENAI_API_KEY : {os.environ.get("OPENAI_API_KEY")}"""
+            # )
         except Exception as ex:
             print(f" error occurred here: {ex}")
 
@@ -76,17 +73,16 @@ class ModelConfigurator:
         os.system("clear" if os.name == "posix" else "cls")
         
         
-    def check_model_connection(self):
-        print("check_model_connection")
-        print(
-                f"""
-                model chose : {self.model_choice}
-                OPENAI_MODEL_NAME: {os.environ["OPENAI_MODEL_NAME"]},
-                OPENAI_API_BASE : {os.environ["OPENAI_API_BASE"]},
-                OPENAI_API_KEY : {os.environ["OPENAI_API_KEY"]}"""
-            )
+    def check_model_connection(self, prompt_message="add 1 and 2!!"):
+        # print("check_model_connection")
+        # print(
+        #         f"""
+        #         model chose : {self.model_choice}
+        #         OPENAI_MODEL_NAME: {os.environ["OPENAI_MODEL_NAME"]},
+        #         OPENAI_API_BASE : {os.environ["OPENAI_API_BASE"]},
+        #         OPENAI_API_KEY : {os.environ["OPENAI_API_KEY"]}"""
+        #     )
 
-        print(" after at the END: check_model_connection")
         client = OpenAI(base_url=os.environ.get("OPENAI_API_BASE"), api_key=os.environ.get("OPENAI_API_KEY"))
 
         try:
@@ -94,14 +90,18 @@ class ModelConfigurator:
             model=os.environ.get("OPENAI_MODEL_NAME"),
             messages=[
                 # {"role": "system", "content": "Always answer in rhymes"},
-                {"role": "user", "content": "add 1 and 2!!"},
+                {"role": "user", "content": f"{prompt_message}"},
             ],
             temperature=0.7,
             stream=True
             )
+            output = ""
             print("CONNECTED")
             for chunk in response:
                 if chunk.choices[0].delta.content is not None:
-                    print(chunk.choices[0].delta.content, end="")
+                    # print(chunk.choices[0].delta.content, end="")
+                    output += chunk.choices[0].delta.content
+
+            return output
         except Exception as ex:
             print(f"NO CONNECTED {ex} !!") 
