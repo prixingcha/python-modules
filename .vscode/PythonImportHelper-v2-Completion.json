@@ -83,6 +83,80 @@
         "documentation": {}
     },
     {
+        "label": "print",
+        "importPath": "rich",
+        "description": "rich",
+        "isExtraImport": true,
+        "detail": "rich",
+        "documentation": {}
+    },
+    {
+        "label": "print",
+        "importPath": "rich",
+        "description": "rich",
+        "isExtraImport": true,
+        "detail": "rich",
+        "documentation": {}
+    },
+    {
+        "label": "pdb",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "pdb",
+        "description": "pdb",
+        "detail": "pdb",
+        "documentation": {}
+    },
+    {
+        "label": "PromptTemplate",
+        "importPath": "langchain.prompts",
+        "description": "langchain.prompts",
+        "isExtraImport": true,
+        "detail": "langchain.prompts",
+        "documentation": {}
+    },
+    {
+        "label": "JsonOutputParser",
+        "importPath": "langchain_core.output_parsers",
+        "description": "langchain_core.output_parsers",
+        "isExtraImport": true,
+        "detail": "langchain_core.output_parsers",
+        "documentation": {}
+    },
+    {
+        "label": "ChatOllama",
+        "importPath": "langchain_community.chat_models",
+        "description": "langchain_community.chat_models",
+        "isExtraImport": true,
+        "detail": "langchain_community.chat_models",
+        "documentation": {}
+    },
+    {
+        "label": "OpenAI",
+        "importPath": "openai",
+        "description": "openai",
+        "isExtraImport": true,
+        "detail": "openai",
+        "documentation": {}
+    },
+    {
+        "label": "Groq",
+        "importPath": "groq",
+        "description": "groq",
+        "isExtraImport": true,
+        "detail": "groq",
+        "documentation": {}
+    },
+    {
+        "label": "importlib.util",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "importlib.util",
+        "description": "importlib.util",
+        "detail": "importlib.util",
+        "documentation": {}
+    },
+    {
         "label": "sample_to_use_menu_and_model_activation",
         "kind": 5,
         "importPath": "common_modules.all_in_one_module",
@@ -123,7 +197,7 @@
         "kind": 6,
         "importPath": "llm_selector_package.llm_selector",
         "description": "llm_selector_package.llm_selector",
-        "peekOfCode": "class LLMSelector:\n    def __init__(self, models):\n        self.models = models\n        self.console = Console()\n    def display_models(self):\n        self.console.print(\"Select an LLM model by entering its corresponding number:\", style=\"bold underline\")\n        for key, value in self.models.items():\n            self.console.print(f\"[red]{key}[/red]: [green]{value}[/green]\")\n    def select_model(self):\n        while True:",
+        "peekOfCode": "class LLMSelector:\n    def __init__(self, models):\n        self.models = models\n        self.console = Console()\n    def make_better_prompt(self, prompt_msg):\n        # Defining LLM\n        local_llm = \"llama3\"\n        # llama3 = ChatOllama(model=local_llm, temperature=0)\n        llama3_json = ChatOllama(model=local_llm, format=\"json\", temperature=0)\n        query_prompt = PromptTemplate(",
         "detail": "llm_selector_package.llm_selector",
         "documentation": {}
     },
@@ -132,7 +206,7 @@
         "kind": 2,
         "importPath": "llm_selector_package.llm_selector",
         "description": "llm_selector_package.llm_selector",
-        "peekOfCode": "def getch():\n    if sys.platform.startswith('win'):\n        import msvcrt\n        return msvcrt.getch().decode('utf-8')\n    else:\n        import tty, termios\n        fd = sys.stdin.fileno()\n        old_settings = termios.tcgetattr(fd)\n        try:\n            tty.setraw(fd)",
+        "peekOfCode": "def getch():\n    if sys.platform.startswith(\"win\"):\n        import msvcrt\n        return msvcrt.getch().decode(\"utf-8\")\n    else:\n        import tty, termios\n        fd = sys.stdin.fileno()\n        old_settings = termios.tcgetattr(fd)\n        try:\n            tty.setraw(fd)",
         "detail": "llm_selector_package.llm_selector",
         "documentation": {}
     },
@@ -141,7 +215,7 @@
         "kind": 5,
         "importPath": "llm_selector_package.llm_selector",
         "description": "llm_selector_package.llm_selector",
-        "peekOfCode": "model_choices = {\n    \"0\": \"Clear all Environment\",\n    \"1\": \"GROQ\",\n    \"2\": \"gpt-3.5-turbo-1106\",\n    \"3\": \"gpt-4.0\",\n    \"4\": \"mistral\",\n    \"5\": \"Other\",\n    \"Q\": \"QUIT\"\n}\nclass LLMSelector:",
+        "peekOfCode": "model_choices = {\n    \"0\": \"Clear all Environment\",\n    \"1\": \"GROQ\",\n    \"2\": \"gpt-3.5-turbo-1106\",\n    \"3\": \"gpt-4.0\",\n    \"4\": \"mistral\",\n    \"5\": \"LM Studio\",\n    \"6\": \"Other\",\n    \"Q\": \"QUIT\",\n}",
         "detail": "llm_selector_package.llm_selector",
         "documentation": {}
     },
@@ -150,8 +224,44 @@
         "kind": 6,
         "importPath": "llm_selector_package.model_setup",
         "description": "llm_selector_package.model_setup",
-        "peekOfCode": "class ModelConfigurator:\n    _instance = None\n    def __new__(cls, model_choice):\n        if cls._instance is None:\n            cls._instance = super().__new__(cls)\n        return cls._instance\n    def __init__(self, model_choice):\n        if not hasattr(self, \"model_choice\"):\n            self.model_choice = model_choice\n    def configure(self):",
+        "peekOfCode": "class ModelConfigurator:\n    _instance = None\n    all_env = {}  # new public variable\n    client = None\n    def __new__(cls, model_choice):\n        if cls._instance is None:\n            cls._instance = super().__new__(cls)\n        return cls._instance\n    def __init__(self, model_choice):\n        if not hasattr(self, \"model_choice\"):",
         "detail": "llm_selector_package.model_setup",
+        "documentation": {}
+    },
+    {
+        "label": "CustomEncoder",
+        "kind": 6,
+        "importPath": "llm_selector_package.python_code_error_function_calling",
+        "description": "llm_selector_package.python_code_error_function_calling",
+        "peekOfCode": "class CustomEncoder(json.JSONEncoder):\n    def default(self, obj):\n        if isinstance(obj, ModuleNotFoundError):\n            return str(obj)\n        return super().default(obj)\ntools = [\n            {\n                \"type\": \"function\",\n                \"function\": {\n                    \"name\": \"check_package\",",
+        "detail": "llm_selector_package.python_code_error_function_calling",
+        "documentation": {}
+    },
+    {
+        "label": "ConversationManager",
+        "kind": 6,
+        "importPath": "llm_selector_package.python_code_error_function_calling",
+        "description": "llm_selector_package.python_code_error_function_calling",
+        "peekOfCode": "class ConversationManager:\n    def __init__(self, api_key, model_name):\n        self.client = Groq(api_key=api_key)\n        self.MODEL = model_name # \"llama3-70b-8192\"\n    # @classmethod\n    def check_package(self, package_name):\n        spec = importlib.util.find_spec(package_name)\n        if spec is None:\n            return json.dumps(\n                {",
+        "detail": "llm_selector_package.python_code_error_function_calling",
+        "documentation": {}
+    },
+    {
+        "label": "error_val",
+        "kind": 5,
+        "importPath": "llm_selector_package.python_code_error_function_calling",
+        "description": "llm_selector_package.python_code_error_function_calling",
+        "peekOfCode": "error_val = \"\" \nclass CustomEncoder(json.JSONEncoder):\n    def default(self, obj):\n        if isinstance(obj, ModuleNotFoundError):\n            return str(obj)\n        return super().default(obj)\ntools = [\n            {\n                \"type\": \"function\",\n                \"function\": {",
+        "detail": "llm_selector_package.python_code_error_function_calling",
+        "documentation": {}
+    },
+    {
+        "label": "tools",
+        "kind": 5,
+        "importPath": "llm_selector_package.python_code_error_function_calling",
+        "description": "llm_selector_package.python_code_error_function_calling",
+        "peekOfCode": "tools = [\n            {\n                \"type\": \"function\",\n                \"function\": {\n                    \"name\": \"check_package\",\n                    \"description\": \"Check if the given python package is installed for the given package name\",\n                    \"parameters\": {\n                        \"type\": \"object\",\n                        \"properties\": {\n                            \"package_name\": {",
+        "detail": "llm_selector_package.python_code_error_function_calling",
         "documentation": {}
     },
     {
@@ -170,51 +280,6 @@
         "description": "new_model_123.variables",
         "peekOfCode": "temp = \"this is temp variable\"",
         "detail": "new_model_123.variables",
-        "documentation": {}
-    },
-    {
-        "label": "selector",
-        "kind": 5,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "selector = LLMSelector(model_choices)\nreturn_val = selector.run()\nprint(return_val)\nconfigurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint('this is just for test')\nimport json\n# Sample data\nsample_data = {\n    \"name\": \"John Doe\",",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "return_val",
-        "kind": 5,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "return_val = selector.run()\nprint(return_val)\nconfigurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint('this is just for test')\nimport json\n# Sample data\nsample_data = {\n    \"name\": \"John Doe\",\n    \"age\": 30,",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "configurator",
-        "kind": 5,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "configurator = ModelConfigurator(return_val)\nconfigurator.configure()\nprint('this is just for test')\nimport json\n# Sample data\nsample_data = {\n    \"name\": \"John Doe\",\n    \"age\": 30,\n    \"city\": \"New York\",\n    \"email\": \"john@example.com\",",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "sample_data",
-        "kind": 5,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "sample_data = {\n    \"name\": \"John Doe\",\n    \"age\": 30,\n    \"city\": \"New York\",\n    \"email\": \"john@example.com\",\n    \"is_active\": True\n}\n# Convert data to JSON format\njson_data = json.dumps(sample_data, indent=4)\n# Print the JSON data",
-        "detail": "app",
-        "documentation": {}
-    },
-    {
-        "label": "json_data",
-        "kind": 5,
-        "importPath": "app",
-        "description": "app",
-        "peekOfCode": "json_data = json.dumps(sample_data, indent=4)\n# Print the JSON data\nprint(json_data)",
-        "detail": "app",
         "documentation": {}
     }
 ]

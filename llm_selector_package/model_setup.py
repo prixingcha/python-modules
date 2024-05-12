@@ -83,6 +83,7 @@ class ModelConfigurator:
         #         OPENAI_API_KEY : {os.environ["OPENAI_API_KEY"]}"""
         #     )
 
+        print(" after at the END: check_model_connection")
         client = OpenAI(base_url=os.environ.get("OPENAI_API_BASE"), api_key=os.environ.get("OPENAI_API_KEY"))
 
         try:
