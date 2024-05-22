@@ -28,6 +28,8 @@ class ModelConfigurator:
                 os.environ["OPENAI_API_BASE"] = env_vars_dict.get("GROQ_API_BASE")
                 os.environ["OPENAI_MODEL_NAME"] = env_vars_dict.get("GROQ_MODEL_NAME")
                 os.environ["OPENAI_API_KEY"] = env_vars_dict.get("GROQ_API_KEY")
+
+                print(f'{os.environ.get("OPENAI_MODEL_NAME")} => {os.environ.get("OPENAI_API_KEY")} ==> {os.environ.get("OPENAI_API_KEY")}')
             
             elif self.model_choice == "gpt-3.5-turbo-1106":
                 print("no changes just run $ renv !!!")
@@ -74,16 +76,7 @@ class ModelConfigurator:
         
         
     def check_model_connection(self, prompt_message="add 1 and 2!!"):
-        # print("check_model_connection")
-        # print(
-        #         f"""
-        #         model chose : {self.model_choice}
-        #         OPENAI_MODEL_NAME: {os.environ["OPENAI_MODEL_NAME"]},
-        #         OPENAI_API_BASE : {os.environ["OPENAI_API_BASE"]},
-        #         OPENAI_API_KEY : {os.environ["OPENAI_API_KEY"]}"""
-        #     )
-
-        print(" after at the END: check_model_connection")
+        # print(" after at the END: check_model_connection")
         client = OpenAI(base_url=os.environ.get("OPENAI_API_BASE"), api_key=os.environ.get("OPENAI_API_KEY"))
 
         try:
@@ -98,6 +91,9 @@ class ModelConfigurator:
             )
             output = ""
             print("CONNECTED")
+            print(os.environ.get("OPENAI_API_BASE"))
+            print(os.environ.get("OPENAI_API_KEY"))
+            print(os.environ.get("OPENAI_MODEL_NAME"))
             for chunk in response:
                 if chunk.choices[0].delta.content is not None:
                     # print(chunk.choices[0].delta.content, end="")
@@ -105,4 +101,31 @@ class ModelConfigurator:
 
             return output
         except Exception as ex:
-            print(f"NO CONNECTED {ex} !!") 
+            print(f"NOT CONNECTED {ex} !!") 
+
+    def replace_error_code(self, file_name, error_json_object):
+        # print(" after at the END: check_model_connection")
+        client = OpenAI(base_url=os.environ.get("OPENAI_API_BASE"), api_key=os.environ.get("OPENAI_API_KEY"))
+
+        try:
+            with open(file_name, "r") as file:
+                file_content = file.read() 
+            response = client.chat.completions.create(
+            model=os.environ.get("OPENAI_MODEL_NAME"),
+            messages=[
+                {"role": "system", "content": f"this is the full python code with error : {file_content}"},
+                {"role": "user", "content": f" fix the error line of code based on this json object, which has all the necessary information  {error_json_object}"},
+            ],
+            temperature=0.7,
+            stream=True
+            )
+            output = ""
+            # print("CONNECTED")
+            for chunk in response:
+                if chunk.choices[0].delta.content is not None:
+                    # print(chunk.choices[0].delta.content, end="")
+                    output += chunk.choices[0].delta.content
+
+            return output
+        except Exception as ex:
+            print(f"NOT CONNECTED {ex} !!") 

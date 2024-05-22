@@ -58,6 +58,31 @@ class ConversationManager:
         self.client = Groq(api_key=api_key)
         self.MODEL = model_name # "llama3-70b-8192"
 
+
+# """
+#                 "package":
+#                 {{
+#                 {{
+#                 "package_name": pygame,
+#                 "is_package_install": "yes",
+#                 "package_install_script":None,
+#                 }}
+#                 }}
+#                 """
+                
+#                 """
+#                 "package":
+#                 {{
+#                 {{
+#                 "package_name": pygame,
+#                 "is_package_install": "No",
+#                 "package_install_script":"pip install pygame,
+#                 }}
+#                 }}
+#                 """
+
+
+
     # @classmethod
     def check_package(self, package_name):
         spec = importlib.util.find_spec(package_name)
@@ -101,7 +126,7 @@ class ConversationManager:
         messages = [
             {
                 "role": "system",
-                "content": "You are a function calling LLM that uses the data extracted from the check_package or check_env_variable function to answer questions, if the function are not relevant then just say , \"I  do not know\" ",
+                "content": "You are a function calling LLM that uses the data extracted from the available function to answer questions, if the function are not relevant then just say , \"I  DO NOT KNOW !!\", DO NOT give any random and uncertain answers. ",
             },
             {
                 "role": "user",
